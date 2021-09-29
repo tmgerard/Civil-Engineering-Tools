@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mechanics.Geometry
 {
+    /// <summary>
+    /// Represents a 2-dimensional vector from origin to a point
+    /// </summary>
     public class Vector2D
     {
         /// <summary>
