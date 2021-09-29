@@ -200,5 +200,69 @@ namespace Mechanics.Geometry
             return i / Norm();
         }
 
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Vector2D);
+        }
+
+        public bool Equals(Vector2D other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return DoubleCompare.AreEqual(i, other.i) && DoubleCompare.AreEqual(j, other.j);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(i, j);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("({0}, {1} with norm of {2}", i, j, Norm());
+        }
+
+        public static Vector2D operator +(Vector2D left, Vector2D right)
+        {
+            return new Vector2D(left.i + right.i, left.j + right.j);
+        }
+
+        public static Vector2D operator -(Vector2D left, Vector2D right)
+        {
+            return new Vector2D(left.i - right.i, left.j - right.j);
+        }
+
+        public static Vector2D operator -(Vector2D vec)
+        {
+            return new Vector2D(-vec.i, vec.j);
+        }
+
+        public static bool operator ==(Vector2D left, Vector2D right)
+        {
+            if (Object.ReferenceEquals(left, null))
+            {
+                if (Object.ReferenceEquals(right, null))
+                {
+                    return true;
+                }
+
+                return true;
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Vector2D left, Vector2D right)
+        {
+            return !(left == right);
+        }
     }
 }
