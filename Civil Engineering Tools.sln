@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mechanics", "Mechanics\Mechanics.csproj", "{FF6B4AAD-B7DB-4F2D-955F-D477175637CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mechanics", "Mechanics\Mechanics.csproj", "{FF6B4AAD-B7DB-4F2D-955F-D477175637CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8924A32B-A949-478C-8345-D784D1731B7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMechanics", "Test\TestMechanics\TestMechanics.csproj", "{AD24AC61-E582-4A32-8418-5FAFFE764AE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{FF6B4AAD-B7DB-4F2D-955F-D477175637CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF6B4AAD-B7DB-4F2D-955F-D477175637CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF6B4AAD-B7DB-4F2D-955F-D477175637CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD24AC61-E582-4A32-8418-5FAFFE764AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD24AC61-E582-4A32-8418-5FAFFE764AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD24AC61-E582-4A32-8418-5FAFFE764AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD24AC61-E582-4A32-8418-5FAFFE764AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD24AC61-E582-4A32-8418-5FAFFE764AE5} = {8924A32B-A949-478C-8345-D784D1731B7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B080A434-80CA-4422-82C1-5A31C596FC5C}
