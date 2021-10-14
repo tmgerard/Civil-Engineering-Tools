@@ -165,5 +165,50 @@ namespace Mechanics.Geometry
         {
             return !(ratio < 0 || ratio > 0);
         }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Segment2D);
+        }
+
+        public bool Equals(Segment2D other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Start.Equals(other.Start) && End.Equals(other.End);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Start, End);
+        }
+
+        public static bool operator ==(Segment2D left, Segment2D right)
+        {
+            if (Object.ReferenceEquals(left, null))
+            {
+                if (Object.ReferenceEquals(right, null))
+                {
+                    return true;
+                }
+
+                return true;
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Segment2D left, Segment2D right)
+        {
+            return !(left == right);
+        }
     }
 }
