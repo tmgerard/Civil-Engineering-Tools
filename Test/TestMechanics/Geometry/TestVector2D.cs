@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mechanics.Geometry;
 using System;
 
-namespace TestMechanics.TestGeometry
+namespace Mechanics.Geometry.Tests
 {
     [TestClass]
     public class TestVector2D

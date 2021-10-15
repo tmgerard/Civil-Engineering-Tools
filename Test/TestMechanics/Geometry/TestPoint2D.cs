@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mechanics.Geometry;
 
-namespace TestMechanics.TestGeometry
+namespace Mechanics.Geometry.Tests
 {
     [TestClass]
     public class TestPoint2D

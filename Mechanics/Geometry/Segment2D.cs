@@ -74,7 +74,7 @@ namespace Mechanics.Geometry
         /// <returns><see cref="Point2D"/> on line segment</returns>
         public Point2D PointAt(double ratio)
         {
-            if !(IsOnSegment(ratio))
+            if (!IsOnSegment(ratio))
             {
                 throw new ArgumentOutOfRangeException("Ratio must be between zero and one.");
             }
