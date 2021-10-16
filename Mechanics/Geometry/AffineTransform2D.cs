@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Mechanics.Geometry
 {
+    /// <summary>
+    /// Tranformstion which applies translation, scaling, and shear to points
+    /// in two-dimensional space.
+    /// </summary>
     public class AffineTransform2D
     {
-        /// <summary>
-        /// Tranformstion which applies translation, scaling, and shear to points
-        /// in two-dimensional space.
-        /// </summary>
         public AffineTransform2D() { }
 
         public AffineTransform2D(double scaleX, double scaleY, 
