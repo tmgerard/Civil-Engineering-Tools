@@ -12,7 +12,15 @@ namespace Mechanics.Geometry
     /// </summary>
     public class AffineTransform2D
     {
-        public AffineTransform2D() { }
+        public AffineTransform2D()
+        {
+            ScaleX = 1;
+            ScaleY = 1;
+            TranslateX = 0;
+            TranslateY = 0;
+            ShearX = 0;
+            ShearY = 0;
+        }
 
         public AffineTransform2D(double scaleX, double scaleY, 
             double translateX, double translateY, 
