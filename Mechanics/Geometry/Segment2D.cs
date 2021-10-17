@@ -163,7 +163,7 @@ namespace Mechanics.Geometry
 
         private bool IsOnSegment(double ratio)
         {
-            return !(ratio < 0 || ratio > 0);
+            return !(ratio < 0 || ratio > 1.0);
         }
 
         public override bool Equals(object obj)

@@ -41,7 +41,7 @@ namespace Mechanics.Geometry
         public double DistanceTo(Point2D other)
         {
             double deltaX = other.x - this.x;
-            double deltaY = other.y = this.y;
+            double deltaY = other.y - this.y;
             return Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
         }
 
