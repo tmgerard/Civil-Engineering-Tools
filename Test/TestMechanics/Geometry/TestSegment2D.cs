@@ -2,7 +2,7 @@
 using Mechanics.Geometry;
 using System;
 
-namespace TestMechanics.Geometry
+namespace Mechanics.Geometry.Tests
 {
     [TestClass]
     public class TestSegment2D
@@ -37,6 +37,50 @@ namespace TestMechanics.Geometry
         {
             Point2D expected = new Point2D(300, 100);
             Point2D actual = segment.PointAt(0.25);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestClosestPointIsStart()
+        {
+            Point2D point = new Point2D(500, 10);
+            Point2D expected = start;
+            Point2D actual = segment.ClosestPointTo(point);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestClosestPointIsEnd()
+        {
+            Point2D point = new Point2D(10, 500);
+            Point2D expected = end;
+            Point2D actual = segment.ClosestPointTo(point);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestClosestPointIsMiddle()
+        {
+            Point2D point = new Point2D(250, 250);
+            Point2D expected = new Point2D(200, 200);
+            Point2D actual = segment.ClosestPointTo(point);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestParallelNoIntersection()
+        {
+            Segment2D other = new Segment2D(new Point2D(200, 0), new Point2D(0, 200));
+            Point2D actual = segment.IntersectionWith(other);
+            Assert.IsNull(actual);
+        }
+
+        [TestMethod]
+        public void TestIntersection()
+        {
+            Segment2D other = new Segment2D(new Point2D(0, 0), new Point2D(400, 400));
+            Point2D expected = new Point2D(200, 200);
+            Point2D actual = segment.IntersectionWith(other);
             Assert.AreEqual(expected, actual);
         }
     }
