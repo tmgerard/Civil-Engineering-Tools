@@ -130,6 +130,39 @@ namespace Mechanics.Geometry.Shapes
         }
 
         /// <summary>
+        /// Computes <see cref="Rectangle"/> intersection between two <see cref="Rectangle"/> objects.
+        /// </summary>
+        /// <param name="other">Intersecting rectangle</param>
+        /// <returns><see cref="Rectangle"/> or null</returns>
+        public Rectangle IntersectionWith(Rectangle other)
+        {
+            OpenInterval hOverlap = HorizontalOverlapWith(other);
+            OpenInterval vOverlap = VerticalOverlapWith(other);
+            if (hOverlap is null || vOverlap is null)
+            {
+                return null;
+            }
+
+            return new Rectangle(hOverlap.Length, vOverlap.Length, new Point2D(hOverlap.Start, vOverlap.Start));
+        }
+
+        private OpenInterval HorizontalOverlapWith(Rectangle other)
+        {
+            OpenInterval selfInterval = new OpenInterval(Left, Right);
+            OpenInterval otherInterval = new OpenInterval(other.Left, other.Right);
+
+            return selfInterval.GetOverlap(otherInterval);
+        }
+
+        private OpenInterval VerticalOverlapWith(Rectangle other)
+        {
+            OpenInterval selfInterval = new OpenInterval(Bottom, Top);
+            OpenInterval otherInterval = new OpenInterval(other.Bottom, other.Top);
+
+            return selfInterval.GetOverlap(otherInterval);
+        }
+
+        /// <summary>
         /// Creates <see cref="Polygon"/> equivalent of <see cref="Rectangle"/> object.
         /// </summary>
         /// <returns><see cref="Polygon"/> object</returns>
