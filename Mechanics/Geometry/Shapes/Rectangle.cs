@@ -128,5 +128,47 @@ namespace Mechanics.Geometry.Shapes
         {
             return Left < point.x && point.x < Right && Bottom < point.y && point.y < Top;
         }
+
+        /// <summary>
+        /// Creates <see cref="Polygon"/> equivalent of <see cref="Rectangle"/> object.
+        /// </summary>
+        /// <returns><see cref="Polygon"/> object</returns>
+        public Polygon ToPolygon()
+        {
+            List<Point2D> vertices = new List<Point2D>()
+            {
+                Origin,
+                new Point2D(Right, Bottom),
+                new Point2D(Right, Top),
+                new Point2D(Left, Top)
+            };
+
+            return new Polygon(vertices);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Rectangle);
+        }
+
+        public bool Equals(Rectangle other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Origin == other.Origin && Width == other.Width && Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Width, Height, Origin, Left, Right, Bottom, Top);
+        }
     }
 }
