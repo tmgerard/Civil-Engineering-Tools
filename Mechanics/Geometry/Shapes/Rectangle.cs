@@ -22,6 +22,8 @@ namespace Mechanics.Geometry.Shapes
         /// <param name="height">Height of <see cref="Rectangle"/></param>
         public Rectangle(double width, double height)
         {
+            CheckWidth(width);
+            CheckHeight(height);
             this.width = width;
             this.height = height;
             this.Origin = new Point2D(0, 0);
@@ -35,9 +37,27 @@ namespace Mechanics.Geometry.Shapes
         /// <param name="origin">Coordinates of bottom left edge of <see cref="Rectangle"/></param>
         public Rectangle(double width, double height, Point2D origin)
         {
+            CheckWidth(width);
+            CheckHeight(height);
             this.width = width;
             this.height = height;
             this.Origin = origin;
+        }
+
+        private void CheckWidth(double width)
+        {
+            if (width <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Rectangle width must be positive");
+            }
+        }
+
+        private void CheckHeight(double height)
+        {
+            if (height <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Rectangle height must be positive");
+            }
         }
 
         /// <summary>
@@ -51,10 +71,7 @@ namespace Mechanics.Geometry.Shapes
             }
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("Rectangle width must be positive");
-                }
+                CheckWidth(value);
                 this.width = value;
             }
         }
@@ -70,10 +87,7 @@ namespace Mechanics.Geometry.Shapes
             }
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("Rectangle height must be positive");
-                }
+                CheckHeight(height);
                 this.height = value;
             }
         }
