@@ -28,7 +28,7 @@ namespace Mechanics.Geometry.Shapes
             this.center = center;
         }
 
-        private void CheckRadius(double radius)
+        private static void CheckRadius(double radius)
         {
             if (radius <= 0)
             {
@@ -36,7 +36,7 @@ namespace Mechanics.Geometry.Shapes
             }
         }
 
-        private void CheckDiameter(double diameter)
+        private static void CheckDiameter(double diameter)
         {
             if (diameter <= 0)
             {
@@ -114,7 +114,7 @@ namespace Mechanics.Geometry.Shapes
             double angleDelta = 2 * Math.PI / divisions;
 
             List<Point2D> vertices = new List<Point2D>();
-            for (int i = 0; i < divisions - 1; i++)
+            for (int i = 0; i < divisions; i++)
             {
                 vertices.Add(PointAtAngle(angleDelta * i));
             }

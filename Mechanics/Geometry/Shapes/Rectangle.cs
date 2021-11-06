@@ -44,7 +44,7 @@ namespace Mechanics.Geometry.Shapes
             this.Origin = origin;
         }
 
-        private void CheckWidth(double width)
+        private static void CheckWidth(double width)
         {
             if (width <= 0)
             {
@@ -52,7 +52,7 @@ namespace Mechanics.Geometry.Shapes
             }
         }
 
-        private void CheckHeight(double height)
+        private static void CheckHeight(double height)
         {
             if (height <= 0)
             {
