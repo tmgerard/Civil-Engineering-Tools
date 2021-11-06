@@ -114,6 +114,15 @@ namespace Mechanics.Geometry.Shapes
         }
 
         /// <summary>
+        /// Returns <see cref="Point2D"/> representing the centroid of the <see cref="Rectangle"/>.
+        /// </summary>
+        /// <returns>Rectangle centroid</returns>
+        public Point2D Centroid()
+        {
+            return new Point2D(Left + 0.5 * (Right - Left), Bottom + 0.5 * (Top - Bottom));
+        }
+
+        /// <summary>
         /// Total length of the <see cref="Rectangle"/>'s sides.
         /// </summary>
         /// <returns>Rectangle perimeter</returns>

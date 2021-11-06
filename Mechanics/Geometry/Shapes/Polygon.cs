@@ -56,7 +56,7 @@ namespace Mechanics.Geometry.Shapes
             double Cx = 0;
             double Cy = 0;
             
-            int next = 0;
+            int next;
             for (int i = 0; i < vertices.Count - 1; i++)
             {
                 next = GetNextIndex(i);

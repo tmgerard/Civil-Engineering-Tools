@@ -27,6 +27,23 @@ namespace Mechanics.Geometry.Shapes.Tests
         }
 
         [TestMethod]
+        public void TestCentroidOriginAtZero()
+        {
+            Point2D expected = new Point2D(5, 2.5);
+
+            Assert.AreEqual(expected, rectangle.Centroid());
+        }
+
+        [TestMethod]
+        public void TestCentroidOriginNotAtZero()
+        {
+            rectangle.Origin = new Point2D(5, 5);
+            Point2D expected = new Point2D(10, 7.5);
+
+            Assert.AreEqual(expected, rectangle.Centroid());
+        }
+
+        [TestMethod]
         public void TestPerimeter()
         {
             double expected = 30;
