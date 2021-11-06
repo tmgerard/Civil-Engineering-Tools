@@ -17,7 +17,7 @@ namespace Mechanics.Geometry.Shapes
 
         public List<Point2D> Vertices
         {
-            get => Vertices;
+            get => vertices;
             set
             {
                 if (value.Count < 3)
@@ -88,6 +88,31 @@ namespace Mechanics.Geometry.Shapes
             }
 
             return next;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Polygon);
+        }
+
+        public bool Equals(Polygon other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Vertices.SequenceEqual(other.Vertices);            
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(vertices, Vertices);
         }
     }
 }

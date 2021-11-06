@@ -11,6 +11,9 @@ namespace Mechanics.Geometry.Shapes
     /// </summary>
     public class Rectangle
     {
+        private double width;
+        private double height;
+
         /// <summary>
         /// Constructs <see cref="Rectangle"/> with a given width and height and a default
         /// origin at point (0, 0).
@@ -19,8 +22,8 @@ namespace Mechanics.Geometry.Shapes
         /// <param name="height">Height of <see cref="Rectangle"/></param>
         public Rectangle(double width, double height)
         {
-            this.Width = width;
-            this.Height = height;
+            this.width = width;
+            this.height = height;
             this.Origin = new Point2D(0, 0);
         }
 
@@ -32,8 +35,8 @@ namespace Mechanics.Geometry.Shapes
         /// <param name="origin">Coordinates of bottom left edge of <see cref="Rectangle"/></param>
         public Rectangle(double width, double height, Point2D origin)
         {
-            this.Width = width;
-            this.Height = height;
+            this.width = width;
+            this.height = height;
             this.Origin = origin;
         }
 
@@ -44,7 +47,7 @@ namespace Mechanics.Geometry.Shapes
         {
             get
             {
-                return this.Width;
+                return this.width;
             }
             set
             {
@@ -52,7 +55,7 @@ namespace Mechanics.Geometry.Shapes
                 {
                     throw new ArgumentOutOfRangeException("Rectangle width must be positive");
                 }
-                this.Width = value;
+                this.width = value;
             }
         }
 
@@ -63,7 +66,7 @@ namespace Mechanics.Geometry.Shapes
         {
             get
             {
-                return this.Height;
+                return this.height;
             }
             set
             {
@@ -71,7 +74,7 @@ namespace Mechanics.Geometry.Shapes
                 {
                     throw new ArgumentOutOfRangeException("Rectangle height must be positive");
                 }
-                this.Height = value;
+                this.height = value;
             }
         }
 
