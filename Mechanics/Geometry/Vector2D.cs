@@ -29,7 +29,14 @@ namespace Mechanics.Geometry
             j = end.y - start.y;
         }
 
+        /// <summary>
+        /// Magnitude of the vector in the i direction along the x-axis
+        /// </summary>
         public double i { get; set; }
+
+        /// <summary>
+        /// Magnitude of the vector in the j direction along the y-axis
+        /// </summary>
         public double j { get; set; }
 
         /// <summary>
@@ -199,6 +206,15 @@ namespace Mechanics.Geometry
             return i / Norm();
         }
 
+        /// <summary>
+        /// Convert <see cref="Vector2D"/> object to a <see cref="Vector3D"/> object
+        /// </summary>
+        /// <returns>Three-dimensional vector</returns>
+        public Vector3D ToVector3D()
+        {
+            return new Vector3D(this);
+        }
+
         public override bool Equals(object obj)
         {
             return this.Equals(obj as Vector2D);
@@ -226,7 +242,7 @@ namespace Mechanics.Geometry
 
         public override string ToString()
         {
-            return String.Format("({0}, {1} with norm of {2}", i, j, Norm());
+            return String.Format("({0}i, {1}j) with norm of {2}", i, j, Norm());
         }
 
         public static Vector2D operator +(Vector2D left, Vector2D right)
@@ -241,7 +257,7 @@ namespace Mechanics.Geometry
 
         public static Vector2D operator -(Vector2D vec)
         {
-            return new Vector2D(-vec.i, vec.j);
+            return new Vector2D(-vec.i, -vec.j);
         }
 
         public static bool operator ==(Vector2D left, Vector2D right)

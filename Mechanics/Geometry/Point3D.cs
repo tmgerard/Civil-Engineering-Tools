@@ -34,6 +34,19 @@ namespace Mechanics.Geometry
         public double z { get; set; }
 
         /// <summary>
+        /// Creates new <see cref="Point3D"/> that is displaced by a <see cref="Vector3D"/> a given
+        /// number of times
+        /// </summary>
+        /// <param name="vector">Displacemdnt vector</param>
+        /// <param name="timesDisplaced">Number of times to apply displacement vector</param>
+        /// <returns>Displaced <see cref="Point3D"/></returns>
+        public Point3D DisplacedBy(Vector3D vector, double timesDisplaced = 1)
+        {
+            Vector3D scaledVector = vector.ScaledBy(timesDisplaced);
+            return new Point3D(x + scaledVector.i, y + scaledVector.j, z + scaledVector.k);
+        }
+
+        /// <summary>
         /// Calculates the distance to a given <see cref="Point3D"/> object.
         /// </summary>
         /// <param name="other"><see cref="Point3D"/> object to find distance to</param>
@@ -79,7 +92,27 @@ namespace Mechanics.Geometry
             return String.Format("({0}, {1}, {2})", x, y, z);
         }
 
-        // TODO: add subtraction operator after defining Vector 3D
+        /// <summary>
+        /// Returns <see cref="Vector3D"/> between two <see cref="Point3D"/> objects
+        /// </summary>
+        /// <param name="left">End point of <see cref="Vector3D"/></param>
+        /// <param name="right">Start point of <see cref="Vector3D"/></param>
+        /// <returns></returns>
+        public static Vector3D operator -(Point3D left, Point3D right)
+        {
+            return new Vector3D(left.x - right.x, left.y - right.y, left.z - right.z);
+        }
+
+        /// <summary>
+        /// Creates new <see cref="Point3D"/> that is displaced by a <see cref="Vector3D"/>
+        /// </summary>
+        /// <param name="left"><see cref="Point3D"/> to diplace</param>
+        /// <param name="right">Displacement <see cref="Vector3D"/></param>
+        /// <returns>Displaced point</returns>
+        public static Point3D operator +(Point3D left, Vector3D right)
+        {
+            return left.DisplacedBy(right);
+        }
 
         public static bool operator ==(Point3D left, Point3D right)
         {
