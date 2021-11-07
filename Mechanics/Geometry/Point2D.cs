@@ -11,6 +11,11 @@ namespace Mechanics.Geometry
     /// </summary>
     public class Point2D
     {
+        public Point2D()
+        {
+            x = 0;
+            y = 0;
+        }
         public Point2D(double x, double y)
         {
             this.x = x;
@@ -84,6 +89,17 @@ namespace Mechanics.Geometry
         public static Vector2D operator -(Point2D left, Point2D right)
         {
             return new Vector2D(left.x - right.x, left.y - right.y);
+        }
+
+        /// <summary>
+        /// Creates new <see cref="Point2D"/> that is displaced by a <see cref="Vector2D"/>
+        /// </summary>
+        /// <param name="left"><see cref="Point2D"/> to diplace</param>
+        /// <param name="right">Displacement <see cref="Vector2D"/></param>
+        /// <returns>Displaced point</returns>
+        public static Point2D operator +(Point2D left, Vector2D right)
+        {
+            return left.DisplacedBy(right);
         }
 
         public static bool operator ==(Point2D left, Point2D right)
