@@ -43,7 +43,7 @@ namespace Mechanics.Geometry
         public Point3D DisplacedBy(Vector3D vector, double timesDisplaced = 1)
         {
             Vector3D scaledVector = vector.ScaledBy(timesDisplaced);
-            return new Point3D(x + scaledVector.i, y + scaledVector.j, z + scaledVector.k);
+            return new Point3D(x + scaledVector.u, y + scaledVector.v, z + scaledVector.w);
         }
 
         /// <summary>

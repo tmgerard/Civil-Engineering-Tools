@@ -78,7 +78,7 @@ namespace Mechanics.Geometry
             double cross = d1.Cross(d2);
             Vector2D delta = new Vector2D(this.Base, other.Base);
 
-            double t1 = (delta.i * d2.j - delta.j * d2.i) / cross;
+            double t1 = (delta.u * d2.v - delta.v * d2.u) / cross;
 
             return this.Base.DisplacedBy(d1, t1);
         }

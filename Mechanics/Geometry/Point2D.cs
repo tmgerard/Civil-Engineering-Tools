@@ -35,7 +35,7 @@ namespace Mechanics.Geometry
         public Point2D DisplacedBy(Vector2D vector, double timesDisplaced = 1)
         {
             Vector2D scaledVector = vector.ScaledBy(timesDisplaced);
-            return new Point2D(x + scaledVector.i, y + scaledVector.j);
+            return new Point2D(x + scaledVector.u, y + scaledVector.v);
         }
 
         /// <summary>

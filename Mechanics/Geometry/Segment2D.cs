@@ -148,8 +148,8 @@ namespace Mechanics.Geometry
             double cross = d1.Cross(d2);
             Vector2D delta = other.Start - Start;
 
-            double t1 = (delta.i * d2.j - delta.j * d2.i) / cross;
-            double t2 = (delta.i * d1.j - delta.j * d1.i) / cross;
+            double t1 = (delta.u * d2.v - delta.v * d2.u) / cross;
+            double t2 = (delta.u * d1.v - delta.v * d1.u) / cross;
 
             if (IsOnSegment(t1) && IsOnSegment(t2))
             {

@@ -10,12 +10,12 @@ namespace Mechanics.Geometry
         /// <summary>
         /// Create a vector from the origin to point (i, j)
         /// </summary>
-        /// <param name="i">x-direction component of vector</param>
-        /// <param name="j">y-direction component of vector</param>
-        public Vector2D(double i, double j)
+        /// <param name="u">x-direction component of vector</param>
+        /// <param name="v">y-direction component of vector</param>
+        public Vector2D(double u, double v)
         {
-            this.i = i;
-            this.j = j;
+            this.u = u;
+            this.v = v;
         }
 
         /// <summary>
@@ -25,19 +25,19 @@ namespace Mechanics.Geometry
         /// <param name="end">End point of <see cref="Vector2D"/></param>
         public Vector2D(Point2D start, Point2D end)
         {
-            i = end.x - start.x;
-            j = end.y - start.y;
+            u = end.x - start.x;
+            v = end.y - start.y;
         }
 
         /// <summary>
         /// Magnitude of the vector in the i direction along the x-axis
         /// </summary>
-        public double i { get; set; }
+        public double u { get; set; }
 
         /// <summary>
         /// Magnitude of the vector in the j direction along the y-axis
         /// </summary>
-        public double j { get; set; }
+        public double v { get; set; }
 
         /// <summary>
         /// Calculates the magnitude of the angle between two <see cref="Vector2D"/> objects
@@ -70,7 +70,7 @@ namespace Mechanics.Geometry
         /// <returns>Cosine of <see cref="Vector2D"/></returns>
         public double Cosine()
         {
-            return j / Norm();
+            return v / Norm();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Mechanics.Geometry
         /// <returns>Cross product</returns>
         public double Cross(Vector2D other)
         {
-            return (i * other.j) - (j * other.i);
+            return (u * other.v) - (v * other.u);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Mechanics.Geometry
         /// <returns>Dot product</returns>
         public double Dot(Vector2D other)
         {
-            return (i * other.i) + (j * other.j);
+            return (u * other.u) + (v * other.v);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Mechanics.Geometry
         /// <returns>Length of <see cref="Vector2D"/></returns>
         public double Norm()
         {
-            return Math.Sqrt(Math.Pow(i, 2) + Math.Pow(j, 2));
+            return Math.Sqrt(Math.Pow(u, 2) + Math.Pow(v, 2));
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Mechanics.Geometry
         /// <returns><see cref="Vector2D"/></returns>
         public Vector2D Opposite()
         {
-            return new Vector2D(-i, -j);
+            return new Vector2D(-u, -v);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Mechanics.Geometry
         /// <returns><see cref="Vector2D"/></returns>
         public Vector2D Perpendicular()
         {
-            return new Vector2D(-j, i);
+            return new Vector2D(-v, u);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Mechanics.Geometry
         {
             double cos = Math.Cos(radians);
             double sin = Math.Sin(radians);
-            return new Vector2D(i * cos - j * sin, i * sin - j * cos);
+            return new Vector2D(u * cos - v * sin, u * sin - v * cos);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Mechanics.Geometry
         /// <returns>Scaled <see cref="Vector2D"/></returns>
         public Vector2D ScaledBy(double scalarValue)
         {
-            return new Vector2D(scalarValue * i, scalarValue * j);
+            return new Vector2D(scalarValue * u, scalarValue * v);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Mechanics.Geometry
         /// <returns>Sine of <see cref="Vector2D"/></returns>
         public double Sine()
         {
-            return i / Norm();
+            return u / Norm();
         }
 
         /// <summary>
@@ -232,32 +232,32 @@ namespace Mechanics.Geometry
                 return true;
             }
 
-            return DoubleCompare.AreEqual(i, other.i) && DoubleCompare.AreEqual(j, other.j);
+            return DoubleCompare.AreEqual(u, other.u) && DoubleCompare.AreEqual(v, other.v);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(i, j);
+            return HashCode.Combine(u, v);
         }
 
         public override string ToString()
         {
-            return String.Format("({0}i, {1}j) with norm of {2}", i, j, Norm());
+            return String.Format("({0}i, {1}j) with norm of {2}", u, v, Norm());
         }
 
         public static Vector2D operator +(Vector2D left, Vector2D right)
         {
-            return new Vector2D(left.i + right.i, left.j + right.j);
+            return new Vector2D(left.u + right.u, left.v + right.v);
         }
 
         public static Vector2D operator -(Vector2D left, Vector2D right)
         {
-            return new Vector2D(left.i - right.i, left.j - right.j);
+            return new Vector2D(left.u - right.u, left.v - right.v);
         }
 
         public static Vector2D operator -(Vector2D vec)
         {
-            return new Vector2D(-vec.i, -vec.j);
+            return new Vector2D(-vec.u, -vec.v);
         }
 
         public static bool operator ==(Vector2D left, Vector2D right)

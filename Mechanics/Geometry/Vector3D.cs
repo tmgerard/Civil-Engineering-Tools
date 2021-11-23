@@ -11,46 +11,46 @@ namespace Mechanics.Geometry
 
         public Vector3D()
         {
-            i = 0;
-            j = 0;
-            k = 0;
+            u = 0;
+            v = 0;
+            w = 0;
         }
 
-        public Vector3D(double i, double j, double k)
+        public Vector3D(double u, double v, double w)
         {
-            this.i = i;
-            this.j = j;
-            this.k = k;
+            this.u = u;
+            this.v = v;
+            this.w = w;
         }
 
         public Vector3D(Vector2D vector)
         {
-            i = vector.i;
-            j = vector.j;
-            this.k = 0;
+            u = vector.u;
+            v = vector.v;
+            this.w = 0;
         }
 
-        public Vector3D(Vector2D vector, double k)
+        public Vector3D(Vector2D vector, double w)
         {
-            i = vector.i;
-            j = vector.j;
-            this.k = k;
+            u = vector.u;
+            v = vector.v;
+            this.w = w;
         }
 
         /// <summary>
         /// Magnitude of the vector in the i direction along the x-axis
         /// </summary>
-        public double i { get; set; }
+        public double u { get; set; }
 
         /// <summary>
         /// Magnitude of the vector in the j direction along the y-axis
         /// </summary>
-        public double j { get; set; }
+        public double v { get; set; }
 
         /// <summary>
         /// Magnitude of the vector in the k direction along the z-axis
         /// </summary>
-        public double k { get; set; }
+        public double w { get; set; }
 
         /// <summary>
         /// Calculates the magnitude of the angle between two <see cref="Vector3D"/> objects
@@ -71,9 +71,9 @@ namespace Mechanics.Geometry
         /// <returns>Cross product</returns>
         public Vector3D Cross(Vector3D other)
         {
-            double i = this.j * other.k - this.k * other.j;
-            double j = -(this.i * other.k - this.k * other.i);
-            double k = this.i * other.j - this.j * other.i;
+            double i = this.v * other.w - this.w * other.v;
+            double j = -(this.u * other.w - this.w * other.u);
+            double k = this.u * other.v - this.v * other.u;
 
             return new Vector3D(i, j, k);
         }
@@ -85,7 +85,7 @@ namespace Mechanics.Geometry
         /// <returns>Dot product</returns>
         public double Dot(Vector3D other)
         {
-            return (i * other.i) + (j * other.j) + (k * other.k);
+            return (u * other.u) + (v * other.v) + (w * other.w);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Mechanics.Geometry
         /// <returns>Length of <see cref="Vector3D"/></returns>
         public double Norm()
         {
-            return Math.Sqrt(Math.Pow(i, 2) + Math.Pow(j, 2) + Math.Pow(k, 2));
+            return Math.Sqrt(Math.Pow(u, 2) + Math.Pow(v, 2) + Math.Pow(w, 2));
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Mechanics.Geometry
         /// <returns><see cref="Vector3D"/></returns>
         public Vector3D Opposite()
         {
-            return new Vector3D(-i, -j, -k);
+            return new Vector3D(-u, -v, -w);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Mechanics.Geometry
         /// <returns>Scaled <see cref="Vector3D"/></returns>
         public Vector3D ScaledBy(double scalarValue)
         {
-            return new Vector3D(scalarValue * i, scalarValue * j, scalarValue * k);
+            return new Vector3D(scalarValue * u, scalarValue * v, scalarValue * w);
         }
 
         public override bool Equals(object obj)
@@ -183,34 +183,34 @@ namespace Mechanics.Geometry
                 return true;
             }
 
-            return DoubleCompare.AreEqual(i, other.i) &&
-                DoubleCompare.AreEqual(j, other.j) &&
-                DoubleCompare.AreEqual(k, other.k);
+            return DoubleCompare.AreEqual(u, other.u) &&
+                DoubleCompare.AreEqual(v, other.v) &&
+                DoubleCompare.AreEqual(w, other.w);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(i, j, k);
+            return HashCode.Combine(u, v, w);
         }
 
         public override string ToString()
         {
-            return String.Format("({0}i, {1}j, {2}k) with norm of {3}", i, j, k, Norm());
+            return String.Format("({0}i, {1}j, {2}k) with norm of {3}", u, v, w, Norm());
         }
 
         public static Vector3D operator +(Vector3D left, Vector3D right)
         {
-            return new Vector3D(left.i + right.i, left.j + right.j, left.k + right.k);
+            return new Vector3D(left.u + right.u, left.v + right.v, left.w + right.w);
         }
 
         public static Vector3D operator -(Vector3D left, Vector3D right)
         {
-            return new Vector3D(left.i - right.i, left.j - right.j, left.k - right.k);
+            return new Vector3D(left.u - right.u, left.v - right.v, left.w - right.w);
         }
 
         public static Vector3D operator -(Vector3D vec)
         {
-            return new Vector3D(-vec.i, -vec.j, -vec.k);
+            return new Vector3D(-vec.u, -vec.v, -vec.w);
         }
 
         public static bool operator ==(Vector3D left, Vector3D right)
